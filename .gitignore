@@ -1,0 +1,15 @@
+# Environnements virtuels Python
+venv/
+env/
+__pycache__/
+
+# Base de données locale (on ne veut pas la mettre sur Github !)
+*.db
+*.sqlite3
+
+# Node.js (pour le Frontend React plus tard)
+node_modules/
+dist/
+
+# Fichiers système
+.DS_Store
