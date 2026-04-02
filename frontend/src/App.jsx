@@ -5,6 +5,7 @@ import Login from "./pages/Login"
 import Layout from "./components/layout/Layout"
 import Mention from "./pages/Mention"
 import Contact from "./pages/Contact"
+import Dashboard from "./pages/Dashboard"
 
 const app = () => {
   return (
@@ -15,6 +16,7 @@ const app = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/mentions" element={<Mention />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Route>
       </Routes>
     </BrowserRouter>

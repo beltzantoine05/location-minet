@@ -24,6 +24,14 @@ class ItemCreate(BaseModel):
     image_url: Optional[str] = None
     association_id: int
 
+class ItemUpdate(BaseModel):
+    nom: Optional[str] = None
+    description: Optional[str] = None
+    prix_location: Optional[float] = None
+    caution: Optional[float] = None
+    image_url: Optional[str] = None
+    association_id: Optional[int] = None
+
 class ItemResponse(BaseModel):
     id: int
     nom: str

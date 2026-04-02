@@ -11,6 +11,7 @@ const associations = [
     { id: "2", name: "BDE", description: "Sonos, tireuses, éco-cups et matériel de soirée." },
     { id: "3", name: "ASINT", description: "Matériel sportif et ballons." },
     { id: "4", name: "BDA", description: "Instruments de musique et matériel d'art." },
+    { id: "5", name: "BPM", description: "Matos de son et lumière" },
 ]
 
 export default function Home() {
@@ -23,7 +24,7 @@ export default function Home() {
                     À qui veux-tu louer ?
                 </h1>
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                    Sélectionne une association pour consulter son catalogue de matériel disponible à la location.
+                    Sélectionne une association ou un club pour consulter son catalogue de matériel disponible à la location.
                 </p>
             </div>
 
@@ -56,7 +57,9 @@ export default function Home() {
                         </CardFooter>
                     </Card>
                 ))}
-
+            </div>
+            <div className="mt-12 text-center text-muted-foreground">
+                Tu n'as pas trouvé ce que tu cherches ? <Link to="/contact" className="text-primary font-semibold hover:underline">Contacte-nous !</Link>
             </div>
         </div>
     );
