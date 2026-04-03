@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom"
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { useEffect } from 'react'
+import { getAssociations } from "@/api/associations"
+import { getItems, getAssociationItems } from "@/api/item"
 
 // On va utiliser ton propre logo comme "faux" logo pour toutes les assos pour l'instant !
 import LogoAsso from "@/assets/minet_light.png"
@@ -15,6 +18,19 @@ const associations = [
 ]
 
 export default function Home() {
+    useEffect(() => {
+        const testerConnexionBackend = async () => {
+            try {
+                const dataAsso = await getAssociations();
+                const dataItemAsso1 = await getAssociationItems(1);
+                console.log("Connexion réussie", dataAsso, dataItemAsso1);
+            } catch (error) {
+                console.log("Erreur de connexion", error);
+            }
+        }
+        testerConnexionBackend();
+    }, [])
+
     return (
         <div className="container mx-auto px-4 max-w-7xl py-12">
 

@@ -16,7 +16,7 @@ def get_db():
 app = FastAPI(title="location MiNET API")
 origins = [
     "http://localhost:5173",
-    "http://localhost:8000"
+    "http://localhost:3000"
 ]
 
 app.add_middleware(
@@ -45,7 +45,7 @@ def create_association(asso : schemas.AssociationCreate, db: Session = Depends(g
     
     return db_asso
 
-@app.get("/association/", response_model=list[schemas.AssociationResponse])
+@app.get("/associations/", response_model=list[schemas.AssociationResponse])
 def get_association(db: Session = Depends(get_db)):
     asso = db.query(models.Association).all()
     return asso
@@ -106,7 +106,7 @@ def update_item(item_id: int, item: schemas.ItemUpdate, db: Session = Depends(ge
     db.refresh(db_item)
     return db_item
 
-@app.get("/association/{association_id}/items", response_model= list[schemas.ItemResponse])
+@app.get("/associations/{association_id}/items", response_model= list[schemas.ItemResponse])
 def get_associations_items(association_id: int, db: Session=Depends(get_db)):
     db_items= db.query(models.Item).filter(models.Item.association_id== association_id).all()
     
