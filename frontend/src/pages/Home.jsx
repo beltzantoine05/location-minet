@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { getAssociations } from "@/api/associations"
 import { getItems, getAssociationItems } from "@/api/item"
 
@@ -9,21 +9,17 @@ import { getItems, getAssociationItems } from "@/api/item"
 import LogoAsso from "@/assets/minet_light.png"
 
 // Nos données de test en attendant que le backend FastAPI nous les envoie plus tard
-const associations = [
-    { id: "1", name: "MiNET", description: "Câbles, serveurs et matériel informatique." },
-    { id: "2", name: "BDE", description: "Sonos, tireuses, éco-cups et matériel de soirée." },
-    { id: "3", name: "ASINT", description: "Matériel sportif et ballons." },
-    { id: "4", name: "BDA", description: "Instruments de musique et matériel d'art." },
-    { id: "5", name: "BPM", description: "Matos de son et lumière" },
-]
-
 export default function Home() {
+    const [associations, setAssociations] = useState([])
+    const [items, setItems] = useState([])
+
     useEffect(() => {
         const testerConnexionBackend = async () => {
             try {
                 const dataAsso = await getAssociations();
-                const dataItemAsso1 = await getAssociationItems(1);
-                console.log("Connexion réussie", dataAsso, dataItemAsso1);
+                const Item = await getItems();
+                setAssociations(dataAsso);
+                setItems(Item);
             } catch (error) {
                 console.log("Erreur de connexion", error);
             }
@@ -56,9 +52,9 @@ export default function Home() {
                         <CardHeader className="text-center pt-8 pb-4">
                             {/* Le Logo centré avec un léger effet de zoom au survol */}
                             <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-muted/50 mb-4 transition-transform duration-300 group-hover:scale-110">
-                                <img src={LogoAsso} alt={asso.name} className="h-14 w-14 object-contain" />
+                                <img src={LogoAsso} alt={asso.nom} className="h-14 w-14 object-contain" />
                             </div>
-                            <CardTitle className="text-2xl font-bold">{asso.name}</CardTitle>
+                            <CardTitle className="text-2xl font-bold">{asso.nom}</CardTitle>
                         </CardHeader>
 
                         <CardContent className="text-center text-sm text-muted-foreground min-h-[4rem]">

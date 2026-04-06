@@ -1,7 +1,7 @@
 import apiClient from "./client";
 
 export const getItems = async () => {
-    const response = await apiClient.get(`/associations/${associationId}/items`);
+    const response = await apiClient.get('/items/');
     return response.data
 }
 
