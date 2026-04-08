@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
+import { useAuth } from "@/context/AuthContext"
 import Logo from '@/assets/minet_light.png'
 
 export default function Navbar() {
+    const { isAuthenticated, logout } = useAuth()
     return (
         <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-md shadow-sm">
             <div className="container flex h-16 items-center mx-auto px-4 max-w-7xl">
@@ -24,10 +26,21 @@ export default function Navbar() {
                             <Link to="/">Catalogue</Link>
                         </Button>
 
-                        {/* Le bouton principal pour se connecter */}
-                        <Button asChild className="font-semibold shadow-md transition-transform hover:-translate-y-0.5">
-                            <Link to="/login">Espace Asso</Link>
-                        </Button>
+                        {/* 3. L'affichage Magique : Connecté OU Non connecté ? */}
+                        {isAuthenticated ? (
+                            <>
+                                <Button asChild variant="ghost" className="hidden sm:flex text-muted-foreground hover:text-foreground">
+                                    <Link to="/dashboard">Dashboard</Link>
+                                </Button>
+                                <Button onClick={logout} variant="outline" className="font-semibold shadow-md transition-transform hover:-translate-y-0.5">
+                                    Déconnexion
+                                </Button>
+                            </>
+                        ) : (
+                            <Button asChild className="font-semibold shadow-md transition-transform hover:-translate-y-0.5">
+                                <Link to="/login">Espace Asso</Link>
+                            </Button>
+                        )}
                     </nav>
                 </div>
             </div>

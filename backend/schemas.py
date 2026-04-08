@@ -22,7 +22,7 @@ class ItemCreate(BaseModel):
     prix_location: float
     caution: float
     image_url: Optional[str] = None
-    association_id: int
+    # association_id: int
 
 class ItemUpdate(BaseModel):
     nom: Optional[str] = None

@@ -154,4 +154,7 @@ def get_associations_items(association_id: int, db: Session=Depends(get_db)):
     
     return db_items
 
+@app.get("/associations/me", response_model=schemas.AssociationResponse)
+def read_current_association(current_asso: models.Association = Depends(get_current_association)):
+    return current_asso
 

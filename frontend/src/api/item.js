@@ -10,3 +10,18 @@ export const getAssociationItems = async (associationId) => {
     return response.data
 }
 
+export const deleteItem = async (itemId) => {
+    const response = await apiClient.delete(`/items/${itemId}`);
+    return response.data
+}
+
+export const updateItem = async (itemId, data) => {
+    const response = await apiClient.put(`/items/${itemId}`, data);
+    return response.data
+}
+
+export const createItem = async (data) => {
+    const response = await apiClient.post(`/items/`, data);
+    return response.data
+}
+
