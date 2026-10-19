@@ -13,3 +13,9 @@ dist/
 
 # Fichiers système
 .DS_Store
+
+# Secrets (le modèle .env.example, lui, est commité)
+.env
+
+# IDE
+.idea/
