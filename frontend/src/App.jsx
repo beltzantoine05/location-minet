@@ -19,7 +19,6 @@ const app = () => {
             <Route path="/mentions" element={<Mention />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/asso/:id" element={<Catalogue />} />
           </Route>
         </Routes>
       </BrowserRouter>
