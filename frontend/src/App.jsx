@@ -8,7 +8,7 @@ import Contact from "./pages/Contact"
 import Dashboard from "./pages/Dashboard"
 import { AuthProvider } from "./context/AuthContext"
 
-const app = () => {
+const App = () => {
   return (
     <AuthProvider>
       <BrowserRouter>
@@ -26,6 +26,6 @@ const app = () => {
   )
 }
 
-export default app
+export default App
 
 
